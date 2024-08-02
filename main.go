@@ -44,6 +44,8 @@ func fetchImages(w http.ResponseWriter, r *http.Request) {
 		result.Data = append(result.Data, htmlFragment)
 	}
 
+	w.Header().Set("Content-Type", "application/json")
+
 	enc := json.NewEncoder(w)
 	enc.Encode(result)
 	fmt.Println("load", team, len(result.Data))
